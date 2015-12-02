@@ -1,0 +1,96 @@
+.navbar-fixed-top {
+  text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(110deg, rgb(206, 7, 60) 30%, rgb(230, 57, 130) 85%);
+  color: #ffffff;
+}
+
+.page-header  {
+  margin: -10px 0px 20px;
+  box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.75);
+}
+
+small {color: #ffffff !important;}
+
+.btn-info {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to bottom, #E63982, #B40332);
+  background-repeat: repeat-x;
+  border-color:#E63982;
+  border-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.25);
+}
+
+.btn-info:active {
+  background: linear-gradient(to bottom, #B40332, #E63982);
+}
+.btn-info:hover {
+  border-color:#18003f;
+}
+.btn-info:focus {
+  border-color:#18003f;
+}
+
+.btn-danger {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to bottom, #f66965, #7b0704);
+}
+.btn-default {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to bottom, #f0f0f0, #9b9b9b);
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: rgba(5, 5, 5, 0.1);
+}
+
+.addmode .editing {
+  display:none;
+}
+.editmode .adding {
+  display:none;
+}
+.keymode .connect {
+  display:none;
+}
+.connectmode .key {
+  display:none;
+}
+
+.form-group {
+  position: relative;
+}
+.mywarning {
+   font-weight: bold;
+   color: #DD0700;
+   opacity: 0
+}
+span.tooltip {
+  box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.75);
+  position: absolute;
+  background: #B40332;
+  border-radius: 3px;
+  bottom: 30px;
+  left: 0;
+  display: inline-block;
+  width: auto;
+  color: #fff;
+  padding: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .2s ease-in-out, bottom .3s ease-in-out;
+  z-index: 10;
+  font-size: 13px;
+  font-weight: normal;
+}
+span.tooltip span {
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 8px 8px 0px 8px;
+  border-color: #B40332 transparent transparent transparent;
+  position: absolute;
+  bottom: -8px;
+}
+*[data-toggle="tooltip"] {
+  position: relative;
+}

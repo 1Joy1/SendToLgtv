@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Send to LG Smart TV preferences preferences</title>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap.theme.min.css" rel="stylesheet">
+    <link href="preferences.css" rel="stylesheet">
+  </head>
+
+  <div class="navbar-fixed-top">
+    <div class="container">
+      <h1>
+        <strong><span style="vertical-align: sub">Send to <span style="font-family: Arial Black; font-size: 40px;">LG</span> Smart TV <small>preferences</small></span>
+        </strong>
+      </h1>
+    </div>
+    <div class="page-header"></div>
+  </div>
+
+  <body role="document" background="PrefBackGraund.png">
+
+    <div class="container theme-showcase" role="main">
+      <h2 data-l10n-id="Your LG Smart TV">Your LG Smart TV</h2>
+      <p data-l10n-id="No LG Smart TV defined" id="noservers" class="alert alert-info hidden">No LG Smart TV defined, you can add your first one below</p>
+
+      <table class="table table-striped">
+        <thead>
+        <tr><th data-l10n-id="LG Smart TV Name">LG Smart TV Name</th><th>LG Smart TV IP</th><th data-l10n-id="LG Smart TV platform">LG Smart TV platform</th><th data-l10n-id="LG Smart TV KEY">LG Smart TV KEY</th><th data-l10n-id="Edit/Remove">Edit/Remove</th></tr>
+        </thead>
+        <tbody id="serverlist">
+        </tbody>
+      </table>
+
+      <div id="formmode" class="addmode keymode">
+        <h3 data-l10n-id="Add your LG Smart TV" class="adding">Add your LG Smart TV</h3>
+        <h3 data-l10n-id="Edit your LG Smart TV" class="editing">Edit your LG Smart TV</h3>
+        <form id="addserver" class="form-inline" role="form">
+          <div class="form-group">
+            <input type="text" name="server-label" required data-toggle="tooltip" data-placement="top" class="form-control" id="server-label" placeholder="LG Smart TV name" data-title="The name you want for this LG Smart TV" />
+          </div>
+          <div class="form-group">
+            <input type="text" name="server-ip" required data-toggle="tooltip" data-placement="top" class="form-control" id="server-ip" placeholder="LG Smart TV IP" data-title="The IP address of the device LG Smart TV" />
+          </div>
+          <div class="form-group">
+            <select class="form-control" name="select-platform" data-toggle="tooltip" data-placement="top" id="select-platform" data-title="Select platform your LG Smart TV. Now support only NetCast platform">
+              <option>NetCast Platform</option>
+            </select>
+            <div class="form-group">
+              <input type="text" name="server-key" data-toggle="tooltip" data-placement="top" class="form-control" id="server-key" placeholder="LG Smart TV KEY" data-title="The secure KEY for remote your LG Smart TV. Рress 'get KEY' and look on TV" />
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-info adding" id="server-add" data-l10n-id="Add">Add</button>
+            <button type="button" class="btn btn-info editing" id="server-edit" data-l10n-id="Edit">Edit</button>
+          </div>
+          <div class="form-group">
+            <button type="button" disabled class="btn btn-info key" id="get-key" data-l10n-id="Get KEY">Get KEY</button>
+            <button type="button" class="btn btn-info connect" id="check-connect" data-l10n-id="Check connect">Check connect</button>
+          </div>
+          <h6 data-l10n-id="Connecting... Wait..." class="form-group" id= "keyanswer" style="font-weight: bold; visibility: hidden;">Connecting... Wait...</h6>
+        </form>
+      </div>
+
+      <b><h5 data-l10n-id="For download and install the player on LG Smart TV, please visit" style="font-weight: bold; display: inline-block;">For download and install the player on LG Smart TV, please visit</h5>
+      <a style="color: rgb(168, 0, 47);" target="_blank" href="http://lgtv.pp.ua">http://lgtv.pp.ua</a></b>
+      <!--h6 class= "mywarning" id= "mywarning" data-l10n-id="If you add, delete or edit your LG Smart TV">If you add, delete or edit your LG Smart TV, requires refresh pages YouTube and RuTube.</h6-->
+      <br />
+      <div id="optionsYoutubeResolution">
+        <h2 data-l10n-id="Youtube resolution playback">Youtube resolution playback</h2>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="360p"> 360p (low quality)
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="720p"> 720p HD
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="1080p"> 1080p HD (unsupported now)
+        </label>
+        <h6 data-l10n-id="Select the playback quality for">Select the playback quality for youtube 360p or 720p or 1080p</h6>
+        <h6 data-l10n-id="At this moment, youtube">At this moment, youtube does not give a stream 1080p in one container (video + audio), but the add-on will automatically select the highest possible quality.</h6>
+      </div>
+    </div>
+
+    <script src="jquery-2.1.1.min.js"></script>
+    <script src="tooltips.js"></script>
+
+    <script>
+    $(document).ready(function(){
+      if (navigator.language.search(/ru/) != -1 || $('#server-edit').html() == "Изменить" || $('#server-add').html() == "Добавить"){
+        $("[name=server-label]:eq(0)").attr("data-title","Произвольное имя, например \"Гостиная\"");
+        $("[name=server-ip]:eq(0)").attr("data-title","IP адрес вашего LG Smart TV");
+        $("[name=select-platform]:eq(0)").attr("data-title","Выберите платформу вашего LG Smart TV. На данный момент поддерживается только NetCast");
+        $("[name=server-key]:eq(0)").attr("data-title","Ключ для управления вашим LG Smart TV. Нажмите 'Получить ключ', он отобразится на экране телевизора.");
+      }
+    });
+    </script>
+  </body>
+</html>
